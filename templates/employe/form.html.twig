@@ -1,0 +1,89 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Hello CmsController!{% endblock %}
+
+
+{% block content %}
+
+        <main class="app-content">
+            <div class="app-title">
+                <div>
+                    <h1><i class="fa fa-users"></i>&nbsp;Edition d'un employé</h1>
+                </div>
+                <ul class="app-breadcrumb breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('cms_homepage') }}"><i class="fa fa-home fa-lg"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('employe_list') }}">Employés</a>
+                    </li>
+                    <li class="breadcrumb-item">Edition d'un employé</li>
+                </ul>
+            </div>
+            <div class="tile">
+
+                <form class="form-horizontal">
+                    <section>
+                        <h3>Informations générales</h3>
+                        <div class="row mt-4">
+
+                            <div class="col-md-8">
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Prénom</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" value="{{ employe.prenom }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Nom</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" value="{{ employe.nom }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Email</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control " type="email" value="{{ employe.email }}">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <hr/>
+                    <section>
+                        <h3>Production</h3>
+                        <div class="row mt-4">
+
+                            <div class="col-md-8">
+                                <div class="form-group row">
+                                    <label for="select-job" class="control-label col-md-3">Métier</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" id="select-job" value="{{ employe.metier.nom }}">
+                                            {% for metier in metiers %}
+                                                <option>{{ metier.nom|capitalize }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3">Coût journalier (en €)</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="number" min="0" value="{{ employe.cout }}">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <hr/>
+                    <div class="row">
+                        <div class="offset-md-6 col-md-6">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+{% endblock %}

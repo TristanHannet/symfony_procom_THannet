@@ -1,0 +1,8 @@
+{% block content %}
+<ul>
+    <li>{{ projet.intitule }}</li>
+    <li>{{ projet.description }}</li>
+    <li>{{ projet.type }}</li>
+    <li>{{ projet.creation|date('d-m-Y') }}</li>
+</ul>
+{% endblock %}

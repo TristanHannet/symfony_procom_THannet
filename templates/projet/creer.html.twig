@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Hello CmsController!{% endblock %}
+
+
+{% block content %}
+
+        <main class="app-content">
+            <div class="app-title">
+                <div>
+                    <h1><i class="fa fa-users"></i>&nbsp;Création d'un Projet</h1>
+                </div>
+                <ul class="app-breadcrumb breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('cms_homepage') }}"><i class="fa fa-home fa-lg"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('projet_list') }}">Projets</a>
+                    </li>
+                    <li class="breadcrumb-item">Création d'un projet</li>
+                </ul>
+            </div>
+            <div class="tile">
+
+                {% for flash_type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ flash_type }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_errors(form.Intitule) }}
+                    {{ form_label(form.Intitule) }}
+                    {{ form_widget(form.Intitule, {'attr':{'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.Description) }}
+                    {{ form_label(form.Description) }}
+                    {{ form_widget(form.Description, {'attr':{'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.Type) }}
+                    {{ form_label(form.Type) }}
+                    {{ form_widget(form.Type, {'attr':{'class': 'form-control'}}) }}
+                </div>
+
+                <button type="submit" class="btn btn-info">Ajouter</button>
+                {{ form_end(form) }}
+            </div>
+        </main>
+
+{% endblock %}

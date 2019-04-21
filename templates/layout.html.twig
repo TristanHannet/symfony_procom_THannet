@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Procom{% endblock %}
+
+{% block body %}
+    <!-- Navbar -->
+    <header class="app-header"><a class="app-header__logo" href="{{ path('cms_homepage') }}">Procom</a>
+        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <li class="app-search">
+                <form action="{{ path('projet_search') }}">
+                    <input name="search" class="app-search__input" type="search" placeholder="Recherche" value="{{ queryString is defined ? queryString }}">
+                    <button type="submit" class="app-search__button"><i class="fa fa-search"></i></button>
+                </form>
+            </li>
+        </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+        <div class="app-sidebar__user">
+            <img class="app-sidebar__user-avatar" src="{{ asset('img/user.jpg') }}" alt="User Image">
+            <div>
+                <p class="app-sidebar__user-name">John Doe</p>
+                <p class="app-sidebar__user-designation">Directeur</p>
+            </div>
+        </div>
+        <ul class="app-menu">
+            <li>
+                <a class="app-menu__item" href="{{ path('cms_homepage') }}">
+                    <i class="app-menu__icon fa fa-dashboard"></i>
+                    <span class="app-menu__label">Tableau de bord</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item" href="{{ path('projet_list') }}">
+                    <i class="app-menu__icon fa fa-laptop"></i>
+                    <span class="app-menu__label">Projets</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item" href="{{ path('employe_list') }}">
+                    <i class="app-menu__icon fa fa-users"></i>
+                    <span class="app-menu__label">Employés</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item" href="{{ path('metier_list') }}">
+                    <i class="app-menu__icon fa fa-book"></i>
+                    <span class="app-menu__label">Métiers</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    {% block content %}
+        {% block footer %}
+            <!-- Footer -->
+            <footer class="main-footer">
+                &copy; 2019 - PROCOM
+            </footer>
+
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
