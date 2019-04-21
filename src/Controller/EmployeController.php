@@ -105,4 +105,20 @@ class EmployeController extends AbstractController
 
     }
 
+
+    /**
+     * @Route("/sup/{id}", name="sup")
+     */
+    public function supprimer(int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $employe = $em->getRepository(Employe::class)->find($id);
+
+        $employe -> setArchive("Oui");
+
+        $em->flush();
+
+        return $this->redirectToRoute('employe_list');
+    }
 }

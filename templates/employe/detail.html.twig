@@ -54,7 +54,7 @@
                         </table>
                         <a href="{{ path('employe_modifier', {'id': employe.id}) }}" class="btn btn-info"><i class="fa fa-pencil"></i>Modifier</a>
                         {% if employe.archive == "Non" %}
-                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o"></i>Archiver</a>
+                        <a href="{{ path('employe_sup', {'id': employe.id}) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i>Archiver</a>
                         {% endif %}
                     </div>
 
